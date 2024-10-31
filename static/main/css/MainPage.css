@@ -1,0 +1,147 @@
+*{
+    font-family: 'Montserrat',sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e3e3e3;
+}
+
+:root {
+    --window: calc(1vw + 1vh);
+}
+/*width: calc(var(--window) * 14);*/
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.triangle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
+
+.triangle-left {
+    border-top: calc(var(--window) * 22) solid transparent; /* Изменим высоту границ */
+    border-bottom: calc(var(--window) * 22) solid transparent; /* Изменим высоту границ */
+    border-right: calc(var(--window) * 22) solid #333; /* Изменим ширину границ */
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation: moveLeft 2s forwards;
+}
+
+.triangle-right {
+    border-top: calc(var(--window) * 22) solid transparent; /* Изменим высоту границ */
+    border-bottom: calc(var(--window) * 22) solid transparent; /* Изменим высоту границ */
+    border-left: calc(var(--window) * 22) solid #333; /* Изменим ширину границ */
+    transform: translate(-50%, -50%) rotate(-45deg);
+    animation: moveRight 2s forwards;
+}
+
+.line {
+    position: absolute;
+    border-radius: calc(var(--window) * 2);;
+    background-color: #333;
+    width: 0;
+    height: calc(var(--window) * 0.09);;
+    animation: drawLine 12.5s infinite;
+}
+
+.line-top {
+    top: calc(var(--window) * -0.1);
+    left: 0;
+    transform-origin: top left;
+}
+
+.line-bottom {
+    bottom: calc(var(--window) * 0.1);
+    right: 0;
+    transform-origin: bottom right;
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translate(-85%, -30%) rotate(-45deg);
+    }
+    100% {
+        transform: translate(-180%, 10%) rotate(-45deg);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translate(-18%, -66%) rotate(-45deg);
+    }
+    100% {
+        transform: translate(100%, -100%) rotate(-45deg);
+    }
+}
+
+@keyframes drawLine {
+    0%, 100% {
+        transform: rotate(40deg);
+        width: 11vw;
+    }
+    50% {
+        transform: rotate(40deg);
+        width: 100vw;
+    }
+}
+
+h1, h2 {
+    opacity: 0; /* Скрыть текст в начале анимации */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+}
+
+
+
+h1 {
+    font-size: calc(var(--window) * 2);
+    animation: fadeIn 2s forwards; /* Анимация появления текста */
+    transition: font-size 0.3s ease;
+}
+
+h1:hover {
+    font-size: calc(var(--window) * 2.3);
+    color: rgb(68, 68, 68);
+}
+
+h2 {
+    font-weight: lighter;
+    font-size: calc(var(--window) * 1);;
+    top: calc(50% + calc(var(--window) * 2.25)); /* Отступ от основной надписи */
+    animation: fadeIn 2s forwards 1s; /* Анимация появления текста с задержкой */
+    /* transition: font-size 0.3s ease; */
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

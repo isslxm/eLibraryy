@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" href="{% static 'main/css/MainPage.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="triangle-container">
+            <div class="triangle triangle-left"></div>
+            <div class="triangle triangle-right"></div>
+        </div>
+        <div class="line line-top"></div>
+        <div class="line line-bottom"></div>
+        <div>
+            <a href="{% url 'books' %}">
+                <button><h1 class="animated-text">eLibrary</h1>
+                <h2 class="animated-text2">Read with pleasure</h2></button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

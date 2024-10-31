@@ -1,0 +1,72 @@
+{% extends 'main/default.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/Books.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...." crossorigin="anonymous">
+    <script src="{% static 'main/js/script.js' %}" data-cards-count="{{ cards.count|default:0 }}"></script>
+    <title>Книги</title>
+{% endblock %}
+{% block body %}
+    <form method="get" action="{% url 'books' %}" class="search-form">
+        <div class="h1"><h1>ELIBRARY</h1></div>
+        {{ form.search.label_tag }}
+        <input type="text" name="{{ form.search.name }}" placeholder='Введите название или автора книги' class="form-control independent-input" autocomplete="off" {% if form.search.value %}value="{{ form.search.value }}"{% endif %} id="{{ form.search.id_for_label }}">
+        <button type="submit" class="search-button">Поиск</button>
+    </form>
+        <div class="form-tags">
+{#        <div class="form-tags">{{ form.tags }}</div>#}
+            {% for i in tag_ids %}
+                <a href="{% url 'books' %}?tags={{ i.id }}&search={% if form.search.value %}{{ form.search.value }}{% endif %}">
+                        <div class="bookstag">
+                        <img src="{% static 'main/images/bookImage.png' %}" alt="YellowBook" type="submit">
+                        <br>
+                        <p>{{ i.name }}
+                            {{ tag.id }}
+                        </p>
+                        </div>
+                </a>
+            {% endfor %}
+        </div>
+   
+    <h2>
+    {% if chosen_tag %}
+        {{ chosen_tag }}
+        {{ search_query }}
+        <a href="{% url 'books' %}" class="x-button" title="Сбросить поиск"><i class="fa-solid fa-x"></i>Сбросить</a>
+    {% else %}
+        {% if search_query %}
+            {{ search_query }}
+            {% else %}
+            Книги
+            {% endif %}
+    {% endif %}
+    <div class='popa'> 
+        <div class="pagination1">
+            <button id="prevBtn" onclick="prevPage()">❮</button>
+            <button id="nextBtn" onclick="nextPage()">❯</button>
+        </div>
+    </div>
+
+    </h2>
+        <div class="card-container">
+        {% if cards %}
+            {% for card in cards %}
+                <a href="{% url 'book_detail' book_id=card.card_id %}" class="card-link">
+                    <div class="card-book">
+                        <div class="overlay raise">
+                            <img src="{% static 'media/covers' %}/{{ card.image.file }}" alt="{{ card.title }}">
+{#                            <p class="author">{{ card.author.capitalize }}</p>#}
+                            <p class="title">{{ card.title.capitalize }}</p>
+{#                            <p class="tags">{% for tag in card.tags.all %}{{ tag }} {% endfor %}</p>#}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>Ничего не найдено:(</p>
+        {% endif %}
+        <script>
+            var cardsCount = {{ cards.count|default:0 }};
+        </script>
+    <script src="{% static 'main/js/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'main/default.html' %}
+{% load static %}
+
+{% block head %}
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/about.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+{% block title %}
+    О нас
+{% endblock %}
+{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>О нас</h1>
+    </header>
+    <main>
+        <section>
+            <h2 class="line">eLibrary</h2>
+            <p>Мы - команда студентов из группы CS-11. Представляем вашему вниманию сайт с учебными материалами! <h2> Описание: </h2>
+                eLibrary - ваш идеальный партнер в образовании и саморазвитии! На нашем веб-платформе вы найдете богатую коллекцию PDF книг и видеоуроков по различным тематикам, доступных для чтения и просмотра в любое время и в любом месте.
+                
+                <h2> Особенности: </h2>
+                
+                Библиотека PDF Книг: Исследуйте широкий выбор книг различных жанров и направлений, доступных для чтения в удобном для вас формате. От литературных произведений до научно-популярных трудов - у нас есть что-то для каждого.
+                
+                Видеоуроки по разным предметам: Обогатите свои знания с помощью видеокурсов, покрывающих широкий спектр тем, начиная от языков и математики, и заканчивая программированием и искусством. Наши видеоуроки разработаны профессионалами в соответствующих областях и предоставляют вам качественное образование на вашем уровне.
+            
+                Начните свой путь к знаниям и саморазвитию с eLibrary уже сегодня!
+                
+                </p>
+        </section>
+        <h2 class="line ">Наша команда</h2>
+        <section class = "us">
+            <div class="team-member"> 
+                <h2>Жанузаков Жанат</h2>
+                <p class="info">Телефон: +996 990 200 707</p>
+                <p class="info">Telegram: @jj07n</p>
+            </div>
+            <div class="team-member">
+                <h2>Орозалиев Адилет</h2>  
+                <p class="info">Телефон: +996 550 290 807</p>
+                <p class="info">Telegram: @adilet</p>
+            </div>
+            <div class="team-member">
+                <h2>Осмонов Ислам</h2>
+                <p class="info">Телефон: +996 509 331 717</p>
+                <p class="info">Telegram: @shxrken</p>
+            </div>
+            {% comment %} <div class="team-member">
+                <h2>Темирбеков Нурлан</h2>
+                <p class="info">Телефон: +996 707 289 199</p>
+                <p class="info">Telegram: @w44414</p>
+            </div> {% endcomment %}
+        </section>
+    </main>
+{% endblock %}

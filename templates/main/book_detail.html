@@ -1,0 +1,35 @@
+{% extends 'main/default.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'main/css/bookdetail.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-...." crossorigin="anonymous" />
+{% endblock %}
+{% block body %}
+
+<div class="title"> 
+    <h1>{{ card.title.capitalize }}</h1>
+</div>
+
+<div class="imgabout">
+    <div class="image">  
+        <img src="{% static 'media/covers' %}/{{ card.image.file }}">
+    </div>
+    <div class="about">
+        <p>{{ card.description }}</p>
+        <p>Ключевые слова:
+            {% for tag in card.tags.all %}
+            {{ tag }}
+            {% if not forloop.last %},{% endif %} {% if forloop.last %}{% endif %}
+            {% endfor %}
+        </p>
+    </div>
+</div>
+
+
+<div class="pdffile">
+    <embed src="{% static 'media/pdfs' %}/{{ card.pdf.file }}" type="application/pdf" width="2000" height="800">
+</div>
+
+{% endblock %}

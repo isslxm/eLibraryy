@@ -1,0 +1,229 @@
+body {
+    flex-direction: row;
+    position: relative;
+    background-size: cover;
+    background-color: #F5F5F5;
+}
+:root {
+    --window: calc(1vw + 1vh);
+}
+h2 {
+    height: calc(1vw * 4 + 1vh);
+}
+a {
+    text-decoration: none;
+}
+
+.card-container {
+    position: absolute;
+    width: 92vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.card-book {
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    transition: transform 0.6s ease;
+    opacity: 1;
+}
+.card-book:hover {
+    transform: scale(1.1);
+    transition: scale 0.5s;
+}
+.card-book-hidden {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.card-book .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+.author,
+.title,
+.tags {
+    white-space: nowrap;
+    flex-direction: column;
+    position: absolute;
+    left: calc(var(--window) * 20);
+    color: red;
+    text-decoration: none;
+}
+.tags {
+    margin-top: calc(var(--window) * 3);
+}
+.author{
+    top: calc(var(--window) * 2);
+}
+.card-book img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--window) * 10.2);
+    padding: calc(var(--window) * 0.4);
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+label[for="id_search"] {
+    display: none;
+}
+label {
+    display: none;
+}
+form input{
+    font-family: "Arial Narrow",sans-serif;
+    letter-spacing: 0.5px;
+    border-radius: 25px;
+    border: solid;
+    border-color: #1c8792;
+    text-decoration: none;
+    margin-left: calc(var(--window) * 2);
+    margin-top: 2%;
+}
+form input:focus{
+    outline: none;
+}
+.search-form {
+    display: flex;
+}
+.search-button {
+    border: none;
+    border-radius: 32px;
+    width: calc(1vw * 7.1 + 1vh);
+    height: calc(1vw * 2.7 + 1vh);
+    cursor: pointer;
+    font-size: calc(1vw * 0.8 + 1vh);
+    background: #a78c6e;
+    color: #ffffff;
+    z-index: 1;
+    margin-left: -5%;
+    margin-top: 2%;
+}
+
+.search-form ::placeholder {
+    padding: 3%;
+}
+
+.search-form .independent-input {
+    position: relative;
+    font-size: calc(var(--window) * 1);
+    background: #E6DBCD;
+    width: calc(var(--window) * 40);
+    height: calc(1vw * 2.7 + 1vh);
+    border-radius: 32px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-form .independent-input:focus {
+    box-shadow: none;
+}
+.h1{
+    font-size: calc(var(--window) * 3);
+    padding-top: 20px;
+}
+
+.x-button {
+    border: none;
+    width: 100%;
+    color: #b62b2b;
+    margin-right: 50%;
+    left: 10%;
+}
+.form-tags {
+    display: flex;
+}
+.bookstag {
+    width: calc(1vw * 5 + 1vh);
+    position: relative;
+    padding-right: calc(var(--window) * 0);
+    font-size: calc(1vw * 0.27 + 1vh);
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+.bookstag img {
+    margin-left: 0px;
+    width: 85%;
+}
+.bookstag:hover {
+    transform: scale(1.25);
+    z-index: 1;
+}
+.bookstag img:hover{
+    filter: brightness(110%);
+}
+
+.popa{
+    width: 100%;
+}
+
+.pagination1 {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#prevBtn,
+#nextBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: calc(1vw * 2 + 1vh);
+    width: calc(var(--window) * 3.5);
+    height: calc(var(--window) * 1.5);
+    background-color: #c7a784;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin: 3px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#prevBtn:hover,
+#nextBtn:hover {
+    background-color: #8b7257;
+    transition: background-color 0.5s;
+}
+.card-book.animate-next {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.raise:hover,
+.raise:focus {
+  /* box-shadow: 0 0.5em 0.5em -0.4em var(--hover) black; */
+  transform: translateY(-0.35em);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.card-book.animate-prev {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.card-book:not(.card-book-hidden) {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}

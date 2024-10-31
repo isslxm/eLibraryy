@@ -1,0 +1,29 @@
+{% extends 'main/default.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/videos.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+    <title>Видеоуроки</title>
+{% endblock %}
+{% block body %}
+
+{% block header %}
+    <div class='header'>
+        <form method="get" action="{% url 'videos' %}" class="search-form">
+            <div class="h1"><h1>ELIBRARY</h1></div>
+            <input type="text" name="{{ form.search.name }}" placeholder='Введите название видео' class="form-control independent-input" autocomplete="off" {% if form.search.value %}value="{{ form.search.value }}"{% endif %} id="{{ form.search.id_for_label }}">
+            <button type="submit" class="search-button">Поиск</button>
+        </form>
+    </div>
+{% endblock %}
+
+    <div class="video-container">
+        {% for video in videos %}
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{video.video_id}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="name">{{ video.title }}</p>
+            <p class="description">{{ video.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
